@@ -15,7 +15,7 @@
     <div id="container">
         <h3 >Employee Information</h3>
         <div id="dropdown" class="form-group">
-            <select name="citySelect" id="citySelect" class="form-control" onchange="changeCitySelect()">
+            <select name="citySelect" id="citySelect" class="form-control">
                 <option selected disabled hidden value="selectCity">Select City</option>
             </select>
             <hr>
@@ -45,7 +45,7 @@
             </table>
         </div>
         <div id="houseDropdown" class="form-group">
-            <select name="houseSelect" id="houseSelect" class="form-control" onchange="changeDepSelect()">
+            <select name="houseSelect" id="houseSelect" class="form-control">
                 <option selected disabled hidden value="houseCity">Select Software House</option>
             </select>
             <hr>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div id="depDropdown" class="form-group">
-            <select name="depSelect" id="depSelect" class="form-control" onchange="displayDepEmp()">
+            <select name="depSelect" id="depSelect" class="form-control">
                 <option selected disabled hidden value="dep">Select Department</option>
             </select>
             <hr>
@@ -81,7 +81,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="obj.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

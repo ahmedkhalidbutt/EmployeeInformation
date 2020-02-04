@@ -206,4 +206,4 @@ var myData = {
       }
     ]
   };
-  
+  export {myData};

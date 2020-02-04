@@ -16,7 +16,7 @@ h3 {
   padding-bottom: 5px;
 }
 #dropdown{
-    width: 400px;
+    width: 500px;
     float: left;
     padding-top: 10px;
 }
@@ -29,15 +29,18 @@ h3 {
   height: 800px;
 }
 #houseDropdown{
-  width: 400px;
+  width: 500px;
   float: left;
   padding-top: 10px;
   display: none;
 }
 #depDropdown{
-  width: 400px;
+  width: 500px;
   float: left;
   padding-top: 10px;
   display: none;
   
+}
+.addCity{
+  display: none;
 }
