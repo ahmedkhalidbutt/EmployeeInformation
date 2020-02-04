@@ -44,3 +44,22 @@ h3 {
 .addCity{
   display: none;
 }
+label{
+  float: left;
+  padding-right: 5px;
+  padding-top: 8px;
+}
+#citylbl{
+  display: none;
+  padding-right: 20px;
+  padding-left: 10px;
+  font-size: large;
+}
+#cityInp{
+  display: none;
+}
+.cityBtn{
+  display: none;
+  margin-left: 20px;
+  float: left;
+}

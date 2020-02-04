@@ -5,6 +5,10 @@ import {displayHouseDrp} from './Functions/DisplayHouseDrp.js'; //Display Softwa
 import {houseDataTable} from './Functions/HouseDataTable.js'; //Display SoftwareHouse Wise Employee DataTable
 import {displayDepDrop} from './Functions/DisplayDepDrop.js'; //Display Department Select + Table
 import {empDataTable} from './Functions/EmpDataTable.js'; //Display Department Wise Employee DataTable
+// CRUD Operation Imports
+import {add, checkInput, addOption,addRow,clearInp} from './CRUD/City/AddCity.js';
+import {delOption, delRow} from './CRUD/City/DelCity.js';
+import {displayBtn} from './CRUD/City/DisplayCityBtn.js';
 
 var data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
@@ -50,6 +54,7 @@ function cityEmpDt(){
 
 // Citydropdown onChange()
 function changeCitySelect(){
+    displayBtn();
     const check = document.querySelector('#cityTable tbody tr') //Get City Table Rows
     const houseCheck = document.querySelectorAll('#houseTable tbody tr'); //Get SoftwareHouse Table Rows
     if(check == null || check == undefined){
@@ -153,3 +158,35 @@ function displayDepEmp(){
 //Add Department Select onChange Attribute
 const depSe = document.getElementById('depSelect');
 depSe.addEventListener("change", displayDepEmp)
+
+function addCity(){
+  add();
+  let input = checkInput();
+  let existingCities = [];
+  cityObj.forEach(city =>{
+    existingCities.push(city.name)
+  })
+  if(existingCities.includes(input) != true ){
+    if(input.length != 0){
+      addOption(input);
+      addRow(input);
+      alert("City Added");
+      clearInp();
+    }
+  }
+  else{
+    alert("City Already Exists");
+  }
+}
+const addCityBtn = document.getElementById('addCitybtn');
+addCityBtn.addEventListener("click",addCity)
+
+function delCity(){
+  add();
+  let input = checkInput();
+  delOption(input);
+  delRow();
+  clearInp();
+}
+const delCityBtn = document.getElementById('delCitybtn');
+delCityBtn.addEventListener("click",delCity)
