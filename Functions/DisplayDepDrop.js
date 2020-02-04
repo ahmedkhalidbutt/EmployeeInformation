@@ -7,9 +7,7 @@ function displayDepDrop(){
     let depDropDiv = document.getElementById('depDropdown');
     depDropDiv.style.display = "block";
     let selectedCity = document.getElementById('citySelect').value;
-    console.log(selectedCity);
     let selectedHouse = document.getElementById('houseSelect').value;
-    console.log(selectedHouse);
     let depOption = document.getElementById('depSelect');
     cityObj.forEach( cityOb => {
       if(selectedCity == cityOb.name){
