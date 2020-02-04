@@ -18,4 +18,4 @@ function delOption(input){
 // function delRow(input){
 
 // }
-export {delOption, delRow};
+export {delOption};

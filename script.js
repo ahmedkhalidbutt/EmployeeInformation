@@ -7,7 +7,7 @@ import {displayDepDrop} from './Functions/DisplayDepDrop.js'; //Display Departme
 import {empDataTable} from './Functions/EmpDataTable.js'; //Display Department Wise Employee DataTable
 // CRUD Operation Imports
 import {add, checkInput, addOption,addRow,clearInp} from './CRUD/City/AddCity.js';
-import {delOption, delRow} from './CRUD/City/DelCity.js';
+import {delOption} from './CRUD/City/DelCity.js';
 import {displayBtn} from './CRUD/City/DisplayCityBtn.js';
 
 var data = Object.assign({},myData)  //Cloning main Object
@@ -185,7 +185,6 @@ function delCity(){
   add();
   let input = checkInput();
   delOption(input);
-  delRow();
   clearInp();
 }
 const delCityBtn = document.getElementById('delCitybtn');
