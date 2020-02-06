@@ -5,13 +5,17 @@ import {displayHouseDrp} from './Functions/DisplayHouseDrp.js'; //Display Softwa
 import {houseDataTable} from './Functions/HouseDataTable.js'; //Display SoftwareHouse Wise Employee DataTable
 import {displayDepDrop} from './Functions/DisplayDepDrop.js'; //Display Department Select + Table
 import {empDataTable} from './Functions/EmpDataTable.js'; //Display Department Wise Employee DataTable
-// CRUD Operation Imports
+// City CRUD Operation Imports
 import {add, checkInput, addOption,addRow,clearInp} from './CRUD/City/AddCity.js';
 import {upCity ,displayUpdateInp,checkUpInput,updateOption, updateRow} from './CRUD/City/UpdateCity.js';
 import {delOption,delRow, delObject} from './CRUD/City/DelCity.js';
 import {displayBtn} from './CRUD/City/DisplayCityBtn.js';
-
+// Software House CRUD Operation Imports
 import{displayHouseBtn} from './CRUD/House/DisplayHousebtn.js';
+import {addHouse,checkNameInput,checkLocationInput, checkTypeInput, addHouseRow, addHouseOption, clearHouseInp, addHouseObject} from './CRUD/House/AddHouse.js';
+import {delDisplayHouse, delHouseOption, delHouseRow, delHouseObject} from './CRUD/House/DelHouse.js';
+import {displayUpdateHouse, updateHouseOption, checknewNameInput,
+   checknewLocationInput, checknewTypeInput, clearnewHouseInp, updateHouseRow, updateHouseObject} from './CRUD/House/UpdateHouse.js';
 
 let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
@@ -58,6 +62,7 @@ function cityEmpDt(){
 // Citydropdown onChange()
 function changeCitySelect(){
     displayBtn();
+    displayHouseBtn();
     const check = document.querySelector('#cityTable tbody tr') //Get City Table Rows
     const houseCheck = document.querySelectorAll('#houseTable tbody tr'); //Get SoftwareHouse Table Rows
     if(check == null || check == undefined){
@@ -121,7 +126,6 @@ function depEmpDt(){
 }
   // Display Department Dropdown + SoftwareDropdown onChange()
 function changeDepSelect(){
-  displayHouseBtn();
   const depCheck = document.querySelectorAll('#depTable tbody tr');
   if(depCheck == null || depCheck == undefined){
     removedtRows();
@@ -215,3 +219,55 @@ function updateCity(){
 }
 const updateCityBtn = document.getElementById('updateCitybtn');
 updateCityBtn.addEventListener("click",updateCity)
+
+function addHousebtn(){
+  addHouse();
+  let name = checkNameInput();
+  let location = checkLocationInput();
+  let type = checkTypeInput();
+  if(name.length != 0){
+    addHouseOption(name);
+  }
+  if(name.length != 0 && location.length != 0 && type.length != 0){
+    addHouseRow(name,location,type);
+    addHouseObject(name,location,type);
+    clearHouseInp();
+    alert("Software House Added");
+  }
+  
+}
+
+const addHouseBtn = document.getElementById('addHousebtn');
+addHouseBtn.addEventListener("click",addHousebtn)
+
+function delHousebtn(){
+  delDisplayHouse();
+  let name = checkNameInput();
+  if(name.length != 0){
+    delHouseOption(name);
+    delHouseRow(name);
+    delHouseObject(name);
+    clearHouseInp();
+  }
+}
+const delHouseBtn = document.getElementById('delHousebtn');
+delHouseBtn.addEventListener("click",delHousebtn)
+
+function updateHousebtn(){
+  displayUpdateHouse();
+  let name = checkNameInput();
+  let newName = checknewNameInput();
+  let newLocation = checknewLocationInput();
+  let newType = checknewTypeInput();
+  if(name.length != 0){
+    updateHouseOption(name, newName);
+    updateHouseRow(name,newName,newLocation,newType);
+    updateHouseObject(name,newName,newLocation,newType);
+    clearHouseInp();
+    clearnewHouseInp();
+  }
+  
+}
+
+const updateHouseBtn = document.getElementById('updateHousebtn');
+updateHouseBtn.addEventListener("click",updateHousebtn)

@@ -3,6 +3,10 @@ let citylbl = document.getElementById('citylbl');
 let cityInp = document.getElementById('cityInp');
 citylbl.style.display = "block";
 cityInp.style.display = "block";
+let newCitylbl = document.getElementById('newCitylbl');
+newCitylbl.style.display = "none";
+let newCityInp = document.getElementById('newCityInp');
+newCityInp.style.display = "none";
 }
 function checkInput(){
     let cityInp = document.getElementById('cityInp').value;

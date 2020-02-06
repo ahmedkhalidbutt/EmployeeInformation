@@ -1,6 +1,4 @@
 import { myData } from "../../JSON/obj.js";
-var data = Object.assign({},myData)
-let cityObj = data.cities;
 
 function delOption(input){
     var citySelect = document.getElementById("citySelect");
