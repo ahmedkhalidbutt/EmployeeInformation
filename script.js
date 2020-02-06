@@ -7,16 +7,16 @@ import {displayDepDrop} from './Functions/DisplayDepDrop.js'; //Display Departme
 import {empDataTable} from './Functions/EmpDataTable.js'; //Display Department Wise Employee DataTable
 // CRUD Operation Imports
 import {add, checkInput, addOption,addRow,clearInp} from './CRUD/City/AddCity.js';
-import {delOption} from './CRUD/City/DelCity.js';
+import {delOption,delRow} from './CRUD/City/DelCity.js';
 import {displayBtn} from './CRUD/City/DisplayCityBtn.js';
 
-var data = Object.assign({},myData)  //Cloning main Object
+let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
 let depDropDiv = document.getElementById('depDropdown'); //department select + table div
 const depCheck = document.querySelectorAll('#depTable tbody tr'); //department table body
 
 // initializing array for employee data
-const cityObj = data.cities; //Main Object City Data
+let cityObj = data.cities; //Main Object City Data
 let empArr = []; //employee Array Initialization
 
 // On Load Hide Table Div
@@ -184,8 +184,12 @@ addCityBtn.addEventListener("click",addCity)
 function delCity(){
   add();
   let input = checkInput();
-  delOption(input);
-  clearInp();
+  if(input.length != 0){
+    delOption(input);
+    delRow(input);
+    alert("City Deleted");
+    clearInp();
+  }
 }
 const delCityBtn = document.getElementById('delCitybtn');
 delCityBtn.addEventListener("click",delCity)

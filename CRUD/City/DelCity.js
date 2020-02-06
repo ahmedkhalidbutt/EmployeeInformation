@@ -15,7 +15,14 @@ function delOption(input){
         alert("City doesn't exists");
     }
 }
-// function delRow(input){
-
-// }
-export {delOption};
+function delRow(input){
+    let tableBody = document.getElementById('cityTable').getElementsByTagName('tbody')[0];
+    let rows = tableBody.getElementsByTagName('tr');
+    for(let i=0; i<rows.length; i++){
+        let rowText = rows[i].cells[0].innerHTML;
+        if(rowText == input){
+            rows[i].cells[0].parentNode.parentNode.removeChild(rows[i])
+        }
+    }
+}
+export {delOption, delRow};
