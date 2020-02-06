@@ -1,3 +1,7 @@
+import { myData } from "../../JSON/obj.js";
+var data = Object.assign({},myData)
+let cityObj = data.cities;
+
 function delOption(input){
     var citySelect = document.getElementById("citySelect");
     let existingCities = [];
@@ -21,8 +25,16 @@ function delRow(input){
     for(let i=0; i<rows.length; i++){
         let rowText = rows[i].cells[0].innerHTML;
         if(rowText == input){
-            rows[i].cells[0].parentNode.parentNode.removeChild(rows[i])
+            rows[i].cells[0].parentNode.parentNode.removeChild(rows[i]);
         }
     }
 }
-export {delOption, delRow};
+function delObject(input){
+    myData.cities.forEach(element => {
+        if(element["name"] == input){
+            delete element["name"];
+            console.log(myData.cities);
+        }
+    });
+}
+export {delOption, delRow,delObject};

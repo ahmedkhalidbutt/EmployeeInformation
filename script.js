@@ -7,8 +7,11 @@ import {displayDepDrop} from './Functions/DisplayDepDrop.js'; //Display Departme
 import {empDataTable} from './Functions/EmpDataTable.js'; //Display Department Wise Employee DataTable
 // CRUD Operation Imports
 import {add, checkInput, addOption,addRow,clearInp} from './CRUD/City/AddCity.js';
-import {delOption,delRow} from './CRUD/City/DelCity.js';
+import {upCity ,displayUpdateInp,checkUpInput,updateOption, updateRow} from './CRUD/City/UpdateCity.js';
+import {delOption,delRow, delObject} from './CRUD/City/DelCity.js';
 import {displayBtn} from './CRUD/City/DisplayCityBtn.js';
+
+import{displayHouseBtn} from './CRUD/House/DisplayHousebtn.js';
 
 let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
@@ -118,6 +121,7 @@ function depEmpDt(){
 }
   // Display Department Dropdown + SoftwareDropdown onChange()
 function changeDepSelect(){
+  displayHouseBtn();
   const depCheck = document.querySelectorAll('#depTable tbody tr');
   if(depCheck == null || depCheck == undefined){
     removedtRows();
@@ -163,13 +167,15 @@ function addCity(){
   add();
   let input = checkInput();
   let existingCities = [];
-  cityObj.forEach(city =>{
+  myData.cities.forEach(city =>{
     existingCities.push(city.name)
   })
   if(existingCities.includes(input) != true ){
     if(input.length != 0){
       addOption(input);
       addRow(input);
+      myData.cities.push({"name":input})
+      console.log(myData.cities);
       alert("City Added");
       clearInp();
     }
@@ -187,9 +193,25 @@ function delCity(){
   if(input.length != 0){
     delOption(input);
     delRow(input);
+    delObject(input);
     alert("City Deleted");
     clearInp();
   }
 }
 const delCityBtn = document.getElementById('delCitybtn');
 delCityBtn.addEventListener("click",delCity)
+
+function updateCity(){
+  add();
+  displayUpdateInp();
+  let prevCity = checkInput();
+  let newCity = checkUpInput();
+  if(prevCity.length != 0 && newCity.length != 0){
+    updateOption(prevCity, newCity);
+    updateRow(prevCity, newCity);
+    upCity(prevCity,newCity);
+  }
+
+}
+const updateCityBtn = document.getElementById('updateCitybtn');
+updateCityBtn.addEventListener("click",updateCity)
