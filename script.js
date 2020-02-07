@@ -78,6 +78,8 @@ function cityEmpDt(){
 function changeCitySelect(){
     let liveSearchbtn = document.getElementById('toggleDt');
     liveSearchbtn.style.display = "none";
+    let switchDt = document.getElementById('switchDt');
+    switchDt.style.display = "none";
     displayBtn();
     displayHouseBtn();
     const check = document.querySelector('#cityTable tbody tr') //Get City Table Rows
@@ -436,9 +438,19 @@ function toggleBtn(){
   dataTable.destroy();
   disableBtn();
 }
-//Live Search Input Event Listener
-const searchInp = document.getElementById('myInput');
-searchInp.addEventListener("keyup",liveSearchInp);
 //Live search button event listener
 const liveSearch = document.getElementById('toggleDt');
 liveSearch.addEventListener("click", toggleBtn);
+//Live Search Input Event Listener
+const searchInp = document.getElementById('myInput');
+searchInp.addEventListener("keyup",liveSearchInp);
+
+function switchBtn(){
+  dataTable.init();
+  searchInp.style.display = "none";
+  let citySelect = document.getElementById('citySelect');
+  citySelect.style.display = "block";
+}
+//Live search button event listener
+const switchdataTable = document.getElementById('switchDt');
+switchdataTable.addEventListener("click", switchBtn);

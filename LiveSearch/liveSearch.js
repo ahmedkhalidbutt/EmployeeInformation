@@ -1,6 +1,6 @@
 function disableBtn(){
-    let toggleBtn = document.getElementById('toggleDt');
-    toggleBtn.setAttribute("disabled",true);
+    // let toggleBtn = document.getElementById('toggleDt');
+    // toggleBtn.setAttribute("disabled",true);
     let citySelect = document.getElementById('citySelect');
     citySelect.style.display = "none";
     let input = document.getElementById('myInput');

@@ -77,7 +77,7 @@ label{
 #depInp, #newDepInp, #empCRUD, #empInput, #prevempNamelbl, #prevempNameInp, #heading, #myInput{
   display: none;
 }
-#toggleDt{
+#toggleDt, #switchDt{
   margin-bottom: 20px;
 }
 #liveSearch{
