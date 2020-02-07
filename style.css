@@ -49,20 +49,8 @@ label{
   padding-right: 5px;
   padding-top: 8px;
 }
-#citylbl{
-  display: none;
-  padding-right: 20px;
-  padding-left: 10px;
-  font-size: large;
-}
 #cityInp{
   display: none;
-}
-#newCitylbl{
-  display: none;
-  padding-right: 20px;
-  padding-left: 10px;
-  font-size: large;
 }
 #newCityInp{
   display: none;
@@ -72,64 +60,26 @@ label{
   margin-left: 30px;
   float: left;
 }
-.houselbl{
-  display: none;
-  padding-right: 20px;
-  padding-left: 10px;
-  font-size: large;
-}
 .houseInp{
   display: none;
 }
-/* #newCitylbl{
-  display: none;
-  padding-right: 20px;
-  padding-left: 10px;
-  font-size: large;
-}
-#newCityInp{
-  display: none;
-} */
-.houseBtn{
+.houseBtn, .depBtn{
   display: none;
   margin-left: 30px;
   float: left;
 }
-.depBtn{
-  display: none;
-  margin-left: 30px;
-  float: left;
-}
-#deplbl{
+#citylbl, #newCitylbl, #deplbl, #newDeplbl, .houselbl{
   display: none;
   padding-right: 20px;
   padding-left: 10px;
   font-size: large;
 }
-#depInp{
+#depInp, #newDepInp, #empCRUD, #empInput, #prevempNamelbl, #prevempNameInp, #heading, #myInput{
   display: none;
 }
-#newDeplbl{
-  display: none;
-  padding-right: 20px;
-  padding-left: 10px;
-  font-size: large;
+#toggleDt{
+  margin-bottom: 20px;
 }
-#newDepInp{
-  display: none;
-}
-#empCRUD{
-  display: none;
-}
-#empInput{
-  display: none;
-}
-#prevempNamelbl{
-  display: none;
-}
-#prevempNameInp{
-  display: none;
-}
-#heading{
-  display: none;
+#liveSearch{
+  padding-bottom: 20px;
 }

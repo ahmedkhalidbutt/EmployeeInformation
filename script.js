@@ -29,6 +29,9 @@ import {displayEmpInp, checkEmpNameInp, checkEmpSalaryInp, checkEmpCityInp,check
 import {displayUpEmpInp, checkUpEmpInput, updateEmpRow, upEmp} from './CRUD/Employee/UpdateEmployee.js';
 import {displayDelInp, delEmpRow, delfromJSON} from './CRUD/Employee/DeleteEmployee.js';
 
+// LiveSearch Import
+import {liveSearchInp, disableBtn} from './LiveSearch/liveSearch.js';
+
 let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
 let depDropDiv = document.getElementById('depDropdown'); //department select + table div
@@ -73,6 +76,8 @@ function cityEmpDt(){
 
 // Citydropdown onChange()
 function changeCitySelect(){
+    let liveSearchbtn = document.getElementById('toggleDt');
+    liveSearchbtn.style.display = "none";
     displayBtn();
     displayHouseBtn();
     const check = document.querySelector('#cityTable tbody tr') //Get City Table Rows
@@ -426,3 +431,14 @@ function updateEmpbtn(){
 //Update Employee onClick
 const upEmpBtn = document.getElementById('updateEmpbtn');
 upEmpBtn.addEventListener("click", updateEmpbtn);
+
+function toggleBtn(){
+  dataTable.destroy();
+  disableBtn();
+}
+//Live Search Input Event Listener
+const searchInp = document.getElementById('myInput');
+searchInp.addEventListener("keyup",liveSearchInp);
+//Live search button event listener
+const liveSearch = document.getElementById('toggleDt');
+liveSearch.addEventListener("click", toggleBtn);
