@@ -22,6 +22,11 @@ import {addDep, checkDepInput, addDepOption,addDepRow,clearDepInp}from './CRUD/D
 import {delDepOption, delDepRow,delDepObject} from './CRUD/Departments/DelDep.js';
 import {displayDepUpdateInp, checkUpDepInput, updateDepOption, updateDepRow, upDep} from './CRUD/Departments/UpdateDep.js';
 
+// Employee CRUD Imports
+import {displayEmpbtn} from './CRUD/Employee/DisplayEmployeebtn.js';
+import {displayEmpInp, checkEmpNameInp, checkEmpSalaryInp, checkEmpCityInp,checkEmpMobileInp, checkEmpTypeInp,
+   clearEmpInp, addtoJSON} from './CRUD/Employee/AddEmployee.js';
+
 let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
 let depDropDiv = document.getElementById('depDropdown'); //department select + table div
@@ -167,6 +172,7 @@ function empDt(){
 function displayDepEmp(){
   removedtRows();
   empDt();
+  displayEmpbtn();
 }
 
 //Add Department Select onChange Attribute
@@ -348,3 +354,33 @@ function updateDepbtn(){
 }
 const upDepBtn = document.getElementById('updateDepbtn');
 upDepBtn.addEventListener("click", updateDepbtn);
+
+function addEmpbtn(){
+  displayEmpInp();
+  let empName = checkEmpNameInp();
+  let empSalary = checkEmpSalaryInp();
+  let empCity = checkEmpCityInp();
+  let empMobile = checkEmpMobileInp();
+  let empType = checkEmpTypeInp();
+  let empdataArr = [];
+  if(empName.length != 0 && empType.length != 0 && empCity.length != 0){
+    empdataArr.push(empName, empSalary, empCity, empMobile, empType)
+  }
+  
+  let empObj ={
+    "name": empName,
+    "salary": empSalary,
+    "city": empCity,
+    "mobileNumber": empMobile,
+    "type": empType
+  }
+  if(empdataArr.length != 0){
+    dataTable.rows().add(empdataArr);
+    addtoJSON(empObj);
+  }
+  console.log(myData);
+  clearEmpInp();
+}
+
+const addEmpBtn = document.getElementById('addEmpbtn');
+addEmpBtn.addEventListener("click", addEmpbtn);

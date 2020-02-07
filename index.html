@@ -55,6 +55,28 @@
                     </thead>
                 </tbody>
             </table>
+            <div id="empCRUD">
+               <div id="empInput">
+                <label for="empName" id="empNamelbl">Name</label>
+                <input type="text" class="form-control w-75" placeholder="Enter Name" id="empNameInp">
+                <br>
+                <label for="empSalary" id="empSalarylbl">Salary</label>
+                <input type="text" class="form-control w-75" placeholder="Enter Salary" id="empSalaryInp">
+                <br>
+                <label for="empCity" id="empCitylbl">City</label>
+                <input type="text" class="form-control w-75" placeholder="Enter City" id="empCityInp">
+                <br>
+                <label for="empMobile" id="empMobilelbl">Mobile Number</label>
+                <input type="text" class="form-control w-75" placeholder="Enter Mobile Number" id="empMobileInp">
+                <br>
+                <label for="empType" id="empTypelbl">Type</label>
+                <input type="text" class="form-control w-75" placeholder="Enter Type" id="empTypeInp">
+                <br>
+               </div>
+                <button type="button" class="btn btn-outline-info empBtn" id="addEmpbtn">Add Employee</button>
+                <button type="button" class="btn btn-outline-secondary empBtn" id="updateEmpbtn">Update Employee</button>
+                <button type="button" class="btn btn-outline-danger empBtn" id="delEmpbtn">Delete Employee</button>
+            </div>
         </div>
         <div id="houseDropdown" class="form-group">
             <select name="houseSelect" id="houseSelect" class="form-control">
