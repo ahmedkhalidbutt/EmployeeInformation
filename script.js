@@ -27,6 +27,8 @@ import {displayEmpbtn} from './CRUD/Employee/DisplayEmployeebtn.js';
 import {displayEmpInp, checkEmpNameInp, checkEmpSalaryInp, checkEmpCityInp,checkEmpMobileInp, checkEmpTypeInp,
    clearEmpInp, addtoJSON} from './CRUD/Employee/AddEmployee.js';
 
+import {displayDelInp, delEmpRow, delfromJSON} from './CRUD/Employee/DeleteEmployee.js';
+
 let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
 let depDropDiv = document.getElementById('depDropdown'); //department select + table div
@@ -384,3 +386,23 @@ function addEmpbtn(){
 
 const addEmpBtn = document.getElementById('addEmpbtn');
 addEmpBtn.addEventListener("click", addEmpbtn);
+
+function delEmpbtn(){
+  displayEmpInp();
+  displayDelInp();
+  let empName = checkEmpNameInp();
+  if(empName.length != 0){
+    delEmpRow(empName);
+    delfromJSON(empName);
+  }
+}
+
+const delEmpBtn = document.getElementById('delEmpbtn');
+delEmpBtn.addEventListener("click", delEmpbtn);
+
+function updateEmpbtn(){
+  
+}
+
+const upEmpBtn = document.getElementById('updateEmpbtn');
+upEmpBtn.addEventListener("click", updateEmpbtn);

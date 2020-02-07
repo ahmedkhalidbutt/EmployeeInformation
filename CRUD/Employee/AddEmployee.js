@@ -32,6 +32,22 @@ function checkEmpTypeInp(){
 function displayEmpInp(){
     let empInpDiv = document.getElementById('empInput');
     empInpDiv.style.display = "block";
+    let empSalarylbl = document.getElementById('empSalarylbl');
+    empSalarylbl.style.display = "block";
+    let empCitylbl = document.getElementById('empCitylbl');
+    empCitylbl.style.display = "block";
+    let empMobilelbl = document.getElementById('empMobilelbl');
+    empMobilelbl.style.display = "block";
+    let empTypelbl = document.getElementById('empTypelbl');
+    empTypelbl.style.display = "block";
+    let empSalaryInp = document.getElementById('empSalaryInp');
+    empSalaryInp.style.display = "block";
+    let empCityInp = document.getElementById('empCityInp');
+    empCityInp.style.display = "block";
+    let empMobileInp = document.getElementById('empMobileInp');
+    empMobileInp.style.display = "block";
+    let empTypeInp = document.getElementById('empTypeInp');
+    empTypeInp.style.display = "block";
 }
 function clearEmpInp(){
     let empNameInp = document.getElementById('empNameInp');
