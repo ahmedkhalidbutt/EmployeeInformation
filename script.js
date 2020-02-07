@@ -16,6 +16,11 @@ import {addHouse,checkNameInput,checkLocationInput, checkTypeInput, addHouseRow,
 import {delDisplayHouse, delHouseOption, delHouseRow, delHouseObject} from './CRUD/House/DelHouse.js';
 import {displayUpdateHouse, updateHouseOption, checknewNameInput,
    checknewLocationInput, checknewTypeInput, clearnewHouseInp, updateHouseRow, updateHouseObject} from './CRUD/House/UpdateHouse.js';
+//Departments CRUD Imports
+import {displayDepbtn} from './CRUD/Departments/DisplayDepbtn.js';
+import {addDep, checkDepInput, addDepOption,addDepRow,clearDepInp}from './CRUD/Departments/AddDep.js';
+import {delDepOption, delDepRow,delDepObject} from './CRUD/Departments/DelDep.js';
+import {displayDepUpdateInp, checkUpDepInput, updateDepOption, updateDepRow, upDep} from './CRUD/Departments/UpdateDep.js';
 
 let data = Object.assign({},myData)  //Cloning main Object
 let depOption = document.querySelectorAll('.depOption'); //department select options
@@ -126,6 +131,7 @@ function depEmpDt(){
 }
   // Display Department Dropdown + SoftwareDropdown onChange()
 function changeDepSelect(){
+  displayDepbtn();
   const depCheck = document.querySelectorAll('#depTable tbody tr');
   if(depCheck == null || depCheck == undefined){
     removedtRows();
@@ -268,6 +274,77 @@ function updateHousebtn(){
   }
   
 }
-
 const updateHouseBtn = document.getElementById('updateHousebtn');
 updateHouseBtn.addEventListener("click",updateHousebtn)
+
+function addDepbtn(){
+  let citySelect = document.getElementById('citySelect').value;
+  let houseSelect = document.getElementById('houseSelect').value;
+  addDep();
+  let input = checkDepInput();
+  let existingDeps = [];
+  myData.cities.forEach(city =>{
+    if(citySelect == city.name){
+      let softwareHouses = city.softwareHouses;
+      softwareHouses.forEach(house =>{
+        if(houseSelect == house.name){
+          let departments = house.departments;
+          departments.forEach(department =>{
+            existingDeps.push(department.name);
+          })
+        }
+      })
+    }
+  })
+  if(existingDeps.includes(input) != true ){
+    if(input.length != 0){
+      addDepOption(input);
+      addDepRow(input);
+      myData.cities.forEach(city =>{
+        if(citySelect == city.name){
+          let softwareHouses = city.softwareHouses;
+          softwareHouses.forEach(house =>{
+            if(houseSelect == house.name){
+              let departments = house.departments;
+              departments.push({"name":input,
+                "employees":[]})
+            }
+          })
+        clearDepInp();
+      }
+    })
+    }
+  }
+  console.log(myData.cities);
+}
+const addDepBtn = document.getElementById('addDepbtn');
+addDepBtn.addEventListener("click",addDepbtn)
+
+function delDepbtn(){
+  addDep();
+  let input = checkDepInput();
+  if(input.length != 0){
+    delDepOption(input);
+    delDepRow(input);
+    delDepObject(input);
+    alert("Department Deleted");
+    clearDepInp();
+  }
+}
+
+const delDepBtn = document.getElementById('delDepbtn');
+delDepBtn.addEventListener("click",delDepbtn)
+
+function updateDepbtn(){
+  addDep();
+  displayDepUpdateInp();
+  let prevDep = checkDepInput();
+  let newDep = checkUpDepInput();
+  if(prevDep.length != 0 && newDep.length != 0){
+    updateDepOption(prevDep, newDep);
+    updateDepRow(prevDep, newDep);
+    upDep(prevDep,newDep);
+  }
+}
+const upDepBtn = document.getElementById('updateDepbtn');
+upDepBtn.addEventListener("click", updateDepbtn);
