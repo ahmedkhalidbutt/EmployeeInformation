@@ -30,6 +30,12 @@ function checkEmpTypeInp(){
     }
 }
 function displayEmpInp(){
+    let prevNamelbl = document.getElementById('prevempNamelbl');
+    prevNamelbl.style.display = "none";
+    let prevNameInp = document.getElementById('prevempNameInp');
+    prevNameInp.style.display = "none";
+    let heading = document.getElementById('heading');
+    heading.style.display = "none";
     let empInpDiv = document.getElementById('empInput');
     empInpDiv.style.display = "block";
     let empSalarylbl = document.getElementById('empSalarylbl');
@@ -60,6 +66,8 @@ function clearEmpInp(){
     empMobileInp.value = '';
     let empTypeInp = document.getElementById('empTypeInp');
     empTypeInp.value = '';
+    let prevNameInp = document.getElementById('prevempNameInp');
+    prevNameInp.value = '';
 }
 function addtoJSON(obj){
     let citySelect = document.getElementById('citySelect').value;

@@ -26,7 +26,7 @@ import {displayDepUpdateInp, checkUpDepInput, updateDepOption, updateDepRow, upD
 import {displayEmpbtn} from './CRUD/Employee/DisplayEmployeebtn.js';
 import {displayEmpInp, checkEmpNameInp, checkEmpSalaryInp, checkEmpCityInp,checkEmpMobileInp, checkEmpTypeInp,
    clearEmpInp, addtoJSON} from './CRUD/Employee/AddEmployee.js';
-
+import {displayUpEmpInp, checkUpEmpInput, updateEmpRow, upEmp} from './CRUD/Employee/UpdateEmployee.js';
 import {displayDelInp, delEmpRow, delfromJSON} from './CRUD/Employee/DeleteEmployee.js';
 
 let data = Object.assign({},myData)  //Cloning main Object
@@ -180,7 +180,7 @@ function displayDepEmp(){
 //Add Department Select onChange Attribute
 const depSe = document.getElementById('depSelect');
 depSe.addEventListener("change", displayDepEmp)
-
+//Add CityOnlick
 function addCity(){
   add();
   let input = checkInput();
@@ -202,9 +202,10 @@ function addCity(){
     alert("City Already Exists");
   }
 }
+//Add City
 const addCityBtn = document.getElementById('addCitybtn');
 addCityBtn.addEventListener("click",addCity)
-
+//Delete City
 function delCity(){
   add();
   let input = checkInput();
@@ -216,9 +217,10 @@ function delCity(){
     clearInp();
   }
 }
+//Delete City OnClick
 const delCityBtn = document.getElementById('delCitybtn');
 delCityBtn.addEventListener("click",delCity)
-
+//Update City
 function updateCity(){
   add();
   displayUpdateInp();
@@ -231,9 +233,10 @@ function updateCity(){
   }
 
 }
+//Update City onClick
 const updateCityBtn = document.getElementById('updateCitybtn');
 updateCityBtn.addEventListener("click",updateCity)
-
+//Add SoftwareHouse
 function addHousebtn(){
   addHouse();
   let name = checkNameInput();
@@ -250,10 +253,10 @@ function addHousebtn(){
   }
   
 }
-
+//Add SoftwareHouse Onclick
 const addHouseBtn = document.getElementById('addHousebtn');
 addHouseBtn.addEventListener("click",addHousebtn)
-
+//Delete SoftwareHouse
 function delHousebtn(){
   delDisplayHouse();
   let name = checkNameInput();
@@ -264,9 +267,10 @@ function delHousebtn(){
     clearHouseInp();
   }
 }
+//Delete softwareHouse onClick
 const delHouseBtn = document.getElementById('delHousebtn');
 delHouseBtn.addEventListener("click",delHousebtn)
-
+//Update Software House
 function updateHousebtn(){
   displayUpdateHouse();
   let name = checkNameInput();
@@ -282,9 +286,10 @@ function updateHousebtn(){
   }
   
 }
+//Update Software House onClick
 const updateHouseBtn = document.getElementById('updateHousebtn');
 updateHouseBtn.addEventListener("click",updateHousebtn)
-
+//Add Department
 function addDepbtn(){
   let citySelect = document.getElementById('citySelect').value;
   let houseSelect = document.getElementById('houseSelect').value;
@@ -325,9 +330,10 @@ function addDepbtn(){
   }
   console.log(myData.cities);
 }
+//Add Department onClick
 const addDepBtn = document.getElementById('addDepbtn');
 addDepBtn.addEventListener("click",addDepbtn)
-
+//Delete Department
 function delDepbtn(){
   addDep();
   let input = checkDepInput();
@@ -339,10 +345,10 @@ function delDepbtn(){
     clearDepInp();
   }
 }
-
+//Delete Deparment onClick
 const delDepBtn = document.getElementById('delDepbtn');
 delDepBtn.addEventListener("click",delDepbtn)
-
+//Update Department
 function updateDepbtn(){
   addDep();
   displayDepUpdateInp();
@@ -354,9 +360,10 @@ function updateDepbtn(){
     upDep(prevDep,newDep);
   }
 }
+//Update Employee onClick
 const upDepBtn = document.getElementById('updateDepbtn');
 upDepBtn.addEventListener("click", updateDepbtn);
-
+//Add Employee
 function addEmpbtn(){
   displayEmpInp();
   let empName = checkEmpNameInp();
@@ -383,10 +390,10 @@ function addEmpbtn(){
   console.log(myData);
   clearEmpInp();
 }
-
+//Add Employee OnClick
 const addEmpBtn = document.getElementById('addEmpbtn');
 addEmpBtn.addEventListener("click", addEmpbtn);
-
+//Delete Employee
 function delEmpbtn(){
   displayEmpInp();
   displayDelInp();
@@ -394,15 +401,28 @@ function delEmpbtn(){
   if(empName.length != 0){
     delEmpRow(empName);
     delfromJSON(empName);
+    clearEmpInp();
   }
 }
-
+//Delete Employee OnClick
 const delEmpBtn = document.getElementById('delEmpbtn');
 delEmpBtn.addEventListener("click", delEmpbtn);
-
+//Update Employee
 function updateEmpbtn(){
-  
+  displayEmpInp();
+  displayUpEmpInp();
+  let prevName = checkUpEmpInput();
+  let empName = checkEmpNameInp();
+  let empSalary = checkEmpSalaryInp();
+  let empCity = checkEmpCityInp();
+  let empMobile = checkEmpMobileInp();
+  let empType = checkEmpTypeInp();
+  if(empName.length != 0 && empType.length != 0 && empCity.length != 0 && prevName.length !=0){
+    updateEmpRow(prevName, empName, empSalary, empCity, empMobile, empType);
+    upEmp(prevName, empName, empSalary, empCity, empMobile, empType)
+  }
+  clearEmpInp();
 }
-
+//Update Employee onClick
 const upEmpBtn = document.getElementById('updateEmpbtn');
 upEmpBtn.addEventListener("click", updateEmpbtn);

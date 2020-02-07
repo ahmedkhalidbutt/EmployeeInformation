@@ -124,3 +124,12 @@ label{
 #empInput{
   display: none;
 }
+#prevempNamelbl{
+  display: none;
+}
+#prevempNameInp{
+  display: none;
+}
+#heading{
+  display: none;
+}
